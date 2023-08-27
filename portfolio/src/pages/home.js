@@ -61,6 +61,7 @@ function Home() {
   const [HuffmanDetails, setHuffmanDetails] = useState(false);
   const [EcommDetails, setEcommDetails] = useState(false);
   const [CovidDetails, setCovidDetails] = useState(false);
+  const [SurviveDetails, setSurviveDetails] = useState(false);
   const LandingImg = {
     backgroundImage: `url(${LandingPage})`,
     zIndex: "-1",
@@ -309,9 +310,9 @@ function Home() {
         <h1 className="text-5xl font-extrabold text-[#6B9080] px-8 mt-12">
           Projects
         </h1>
-        <div className="flex flex-wrap">
-          {/*Project 1*/}
-          <div className="flex mx-16 my-8 w-1/3">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {/*Project 1 - Home Rental*/}
+          <div className="flex mx-16 my-8 w-full md:w-1/2 lg:w-1/3 ">
             <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div
                 class=" overflow-hidden bg-cover bg-no-repeat"
@@ -559,8 +560,8 @@ function Home() {
               </div>
             )}
           </div>
-          {/*Project 2*/}
-          <div className="flex mx-16 my-8 w-1/3">
+          {/*Project 2 - Job Hire*/}
+          <div className="flex mx-16 my-8 w-full md:w-1/2 lg:w-1/3">
             <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div
                 class=" overflow-hidden bg-cover bg-no-repeat flex justify-center items-center"
@@ -662,6 +663,16 @@ function Home() {
                     <div className="w-full carousel  ">
                       <div
                         className="carousel-item w-full flex justify-center "
+                        id="JH1"
+                      >
+                        <img
+                          src={JH1}
+                          className=" w-1/2 h-[40em]"
+                          alt="Tailwind CSS Carousel component"
+                        />
+                      </div>
+                      <div
+                        className="carousel-item w-full flex justify-center "
                         id="JH2"
                       >
                         <img
@@ -722,23 +733,26 @@ function Home() {
                       </div>
                     </div>
                     <div className="flex justify-center w-full py-2 gap-2">
-                      <a href="#JH2" className="btn btn-xs">
+                      <a href="#JH1" className="btn btn-xs">
                         1
                       </a>
-                      <a href="#JH3" className="btn btn-xs">
-                        2
-                      </a>
-                      <a href="#JH4" className="btn btn-xs">
+                      <a href="#JH2" className="btn btn-xs">
                         3
                       </a>
-                      <a href="#JH5" className="btn btn-xs">
+                      <a href="#JH3" className="btn btn-xs">
+                        3
+                      </a>
+                      <a href="#JH4" className="btn btn-xs">
                         4
                       </a>
-                      <a href="#JH6" className="btn btn-xs">
+                      <a href="#JH5" className="btn btn-xs">
                         5
                       </a>
-                      <a href="#JH7" className="btn btn-xs">
+                      <a href="#JH6" className="btn btn-xs">
                         6
+                      </a>
+                      <a href="#JH7" className="btn btn-xs">
+                        7
                       </a>
                     </div>
 
@@ -828,8 +842,8 @@ function Home() {
               </div>
             )}
           </div>
-          {/*Project 3*/}
-          <div className="flex mx-16 my-8 w-1/3">
+          {/*Project 3 - Huffman coding*/}
+          <div className="flex mx-16 my-8 w-full md:w-1/2 lg:w-1/3">
             <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div
                 class=" overflow-hidden bg-cover bg-no-repeat flex justify-center items-center"
@@ -982,8 +996,8 @@ function Home() {
               </div>
             )}
           </div>
-          {/*Project 4*/}
-          <div className="flex mx-16 my-8 w-1/3">
+          {/*Project 4 - Ecommerece ShoeFly*/}
+          <div className="flex mx-16 my-8 w-full md:w-1/2 lg:w-1/3">
             <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div
                 class=" overflow-hidden bg-cover bg-no-repeat"
@@ -1162,8 +1176,8 @@ function Home() {
               </div>
             )}
           </div>
-          {/*Project 5*/}
-          <div className="flex mx-16 my-8 w-1/3">
+          {/*Project 5 - Simulating covid*/}
+          <div className="flex mx-16 my-8 w-full md:w-1/2 lg:w-1/3 ">
             <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div
                 class=" overflow-hidden bg-cover bg-no-repeat flex justify-center items-center"
@@ -1349,7 +1363,7 @@ function Home() {
                           parallel program
                         </span>{" "}
                         using pthreads to simulate the spread of Covid-19 in the{" "}
-                        <span className="bg-[#cce3de] px-1">C </span>programming
+                        <span className="bg-[#cce3de] px-1">C</span> programming
                         language. I then created a visual program using{" "}
                         <span className="bg-[#cce3de] px-1">Java Swing</span>{" "}
                         which reads the files that the two programs create,
@@ -1382,8 +1396,8 @@ function Home() {
               </div>
             )}
           </div>
-          {/*Project 6*/}
-          <div className="flex mx-16 my-8 w-1/3">
+          {/*Project 6 - Zombie game*/}
+          <div className="flex mx-16 my-8 w-full md:w-1/2 lg:w-1/3">
             <div class="block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] dark:bg-neutral-700">
               <div
                 class=" overflow-hidden bg-cover bg-no-repeat flex justify-center items-center"
@@ -1417,7 +1431,7 @@ function Home() {
                 <div className="flex justify-center">
                   <button
                     onClick={() => {
-                      setCovidDetails(true);
+                      setSurviveDetails(true);
                     }}
                     type="button"
                     class="inline-block rounded bg-[#6B9080] px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] ]"
@@ -1427,7 +1441,7 @@ function Home() {
                 </div>
               </div>
             </div>
-            {CovidDetails && (
+            {SurviveDetails && (
               <div
                 id="defaultModal"
                 tabindex="-1"
@@ -1442,7 +1456,7 @@ function Home() {
                         class="text-black  ay-400 bg-transparent hover:bg-[#a4c3b2] hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                         data-modal-hide="defaultModal"
                         onClick={() => {
-                          setCovidDetails(false);
+                          setSurviveDetails(false);
                         }}
                       >
                         <svg
@@ -1467,120 +1481,61 @@ function Home() {
                     <div className="w-full carousel  ">
                       <div
                         className="carousel-item w-full flex justify-center "
-                        id="SM1"
+                        id="ss1"
                       >
                         <img
-                          src={SM1}
+                          src={ss1}
                           className=" w-full h-[30em]"
                           alt="Tailwind CSS Carousel component"
                         />
                       </div>
                       <div
                         className="carousel-item w-full flex justify-center"
-                        id="SM2"
+                        id="ss4"
                       >
                         <img
-                          src={SM2}
+                          src={ss4}
                           className=" w-full h-[30em]"
                           alt="Tailwind CSS Carousel component"
                         />
                       </div>
                       <div
                         className="carousel-item w-full flex justify-center"
-                        id="SM3"
+                        id="ss6"
                       >
                         <img
-                          src={SM3}
-                          className=" w-full h-[30em]"
-                          alt="Tailwind CSS Carousel component"
-                        />
-                      </div>
-                      <div
-                        className="carousel-item w-full flex justify-center"
-                        id="SM4"
-                      >
-                        <img
-                          src={SM4}
-                          className=" w-full h-[30em]"
-                          alt="Tailwind CSS Carousel component"
-                        />
-                      </div>
-                      <div
-                        className="carousel-item w-full flex justify-center"
-                        id="SM5"
-                      >
-                        <img
-                          src={SM5}
-                          className=" w-full h-[30em]"
-                          alt="Tailwind CSS Carousel component"
-                        />
-                      </div>
-                      <div
-                        className="carousel-item w-full flex justify-center"
-                        id="SM6"
-                      >
-                        <img
-                          src={SM6}
+                          src={ss6}
                           className=" w-full h-[30em]"
                           alt="Tailwind CSS Carousel component"
                         />
                       </div>
                     </div>
                     <div className="flex justify-center w-full py-2 gap-2">
-                      <a href="#SM1" className="btn btn-xs">
+                      <a href="#ss1" className="btn btn-xs">
                         1
                       </a>
-                      <a href="#SM2" className="btn btn-xs">
+                      <a href="#ss4" className="btn btn-xs">
                         2
                       </a>
-                      <a href="#SM3" className="btn btn-xs">
+                      <a href="#ss6" className="btn btn-xs">
                         3
-                      </a>
-                      <a href="#SM4" className="btn btn-xs">
-                        4
-                      </a>
-                      <a href="#SM5" className="btn btn-xs">
-                        5
-                      </a>
-                      <a href="#SM6" className="btn btn-xs">
-                        6
                       </a>
                     </div>
 
                     <div>
                       <h1 class="text-3xl  pt-2 px-8 font-semibold text-gray-900 dark:text-white">
-                        Simulating the Spread of Covid-19 using Cellular
-                        Automata
+                        Zombie Survival Game
                       </h1>
                       {/*  <span className="bg-[#cce3de] px-1"> */}
                       <p className="py-6 px-8 text-xl ">
-                        For this project I was tasked with planning and creating
-                        a{" "}
-                        <span className="bg-[#cce3de] px-1">
-                          cellular automata
-                        </span>{" "}
-                        to simulate the spread of Covid-19 based on a SEIRD
-                        model. I created a{" "}
-                        <span className="bg-[#cce3de] px-1">
-                          serial program
-                        </span>{" "}
-                        and a{" "}
-                        <span className="bg-[#cce3de] px-1">
-                          parallel program
-                        </span>{" "}
-                        using pthreads to simulate the spread of Covid-19 in the{" "}
-                        <span className="bg-[#cce3de] px-1">C </span>programming
-                        language. I then created a visual program using{" "}
-                        <span className="bg-[#cce3de] px-1">Java Swing</span>{" "}
-                        which reads the files that the two programs create,
-                        which shows how the programs simulate the spread of
-                        Covid-19 over time. The files contain the worlds as they
-                        generate for a specified number of iterations. After
-                        completing the mentioned programs. I compared the{" "}
-                        <span className="bg-[#cce3de] px-1">
-                          computational performance
-                        </span>{" "}
-                        of the serial program versus the parallel program.
+                        For this project we were tasked with creating a game. I
+                        worked as part of a team to develop a zombie survival
+                        game. It involved three rounds and a person had to shoot
+                        zombie to collect points, the points were used to
+                        progress to the next round. The user can also collect
+                        power ups such as fast movement and healing. We
+                        developed an alpha version and a final version of the
+                        survival game.
                       </p>
                     </div>
                     <div class="flex justify-center bg-[#cce3de] p-2 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
@@ -1589,6 +1544,12 @@ function Home() {
                           <SiCsharp className="h-12 w-12 " />
                         </div>
                         <p className="text-sm">C#</p>
+                      </div>
+                      <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                        <div className="p-1 rounded-full">
+                          <BiLogoUnity className="h-12 w-12 " />
+                        </div>
+                        <p className="text-sm">Unity</p>
                       </div>
                     </div>
                   </div>
@@ -1600,10 +1561,97 @@ function Home() {
       </div>
       {/* Contact  */}
       <div
-        className="bg-white h-screen flex justify-center items-center"
+        class="py-6 dark:bg-gray-800 dark:text-gray-50 h-screen  flex items-center "
         id="contact"
       >
-        <h1 className="text-5xl font-extrabold ">CONTACT</h1>
+        <div className="w-full">
+          <div class="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
+            <div class="py-6 md:py-0 md:px-6">
+              <h1 class="text-5xl font-bold mb-6">Get in touch</h1>
+
+              <div class="space-y-4">
+                <p class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="w-5 h-5 mr-2 sm:mr-6"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
+                      clip-rule="evenodd"
+                    ></path>
+                  </svg>
+                  <span>Dublin</span>
+                </p>
+                <p class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor"
+                    class="w-5 h-5 mr-2 sm:mr-6"
+                    viewBox="0 0 24 24"
+                  >
+                    <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                  </svg>
+                  <a
+                    href="https://www.linkedin.com/in/OisinEgan/"
+                    target="_blank"
+                  >
+                    <span>linkedin.com/in/OisinEgan</span>
+                  </a>
+                </p>
+                <p class="flex items-center">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    class="w-5 h-5 mr-2 sm:mr-6"
+                  >
+                    <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
+                    <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
+                  </svg>
+                  <span>oisinegan00@gmail.com</span>
+                </p>
+              </div>
+            </div>
+            <form
+              novalidate=""
+              class="flex flex-col py-6 space-y-6 md:py-0 md:px-6"
+            >
+              <label class="block">
+                <span class="mb-1">Full name</span>
+                <input
+                  type="text"
+                  placeholder="Joe Smith"
+                  class="block w-full rounded-md shadow-sm focus:ring focus:ri focus:ri dark:bg-gray-800"
+                />
+              </label>
+              <label class="block">
+                <span class="mb-1">Email address</span>
+                <input
+                  type="email"
+                  placeholder="name@email.com"
+                  class="block w-full rounded-md shadow-sm focus:ring focus:ri focus:ri dark:bg-gray-800"
+                />
+              </label>
+              <label class="block">
+                <span class="mb-1">Message</span>
+                <textarea
+                  rows="4"
+                  placeholder="Your message..."
+                  class="block w-full rounded-md shadow-md focus:ring focus:ri focus:ri dark:bg-gray-800"
+                ></textarea>
+              </label>
+              <button
+                type="button"
+                class="self-center px-6 py-2 text-lg rounded focus:ring bg-[#A4C3B2] hover:ring focus:ri  focus:ri hover:ri ring-[#A4C3B2]"
+              >
+                Submit
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
       {/* FOOTER  */}
       <div className="bg-[#A4C3B2]">
