@@ -8,12 +8,6 @@ function Nav() {
     setIsCollapsed(!isCollapsed);
   };
 
-  const navActive = () => {
-    console.log(window.scrollY);
-  };
-
-  window.addEventListener("scroll", navActive);
-
   return (
     <nav
       class="relative  flex w-full flex-nowrap items-center justify-between bg-[#6b9080]  text-[#EBEBEB] shadow-sm
