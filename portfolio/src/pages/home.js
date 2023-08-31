@@ -1355,7 +1355,7 @@ function Home() {
           </div>
           {isSubmitted && (
             <div
-              class="bg-green-100 border border-green-400 text-green-700 px-8 py-8 rounded relative mx-4"
+              class="bg-green-100 border border-green-400 text-green-700 px-8 py-8 rounded relative mx-4 mt-8"
               role="alert"
             >
               <strong class="font-bold">Received! </strong>
@@ -1379,8 +1379,8 @@ function Home() {
           )}
         </div>
       </div>
-        
-     {/*Footer  */}
+
+      {/*Footer  */}
       <footer class="footer footer-center flex justify-between px-8  w-full p-4 bg-[#A4C3B2] text-gray-800">
         <div>
           <div class="text-center text-lg">
