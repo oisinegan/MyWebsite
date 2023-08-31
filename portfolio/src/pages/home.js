@@ -74,15 +74,9 @@ function Home() {
   const { ref: projectsRef4, inView: projectsInView4 } = useInView();
   const { ref: projectsRef5, inView: projectsInView5 } = useInView();
   const { ref: contactRef, inView: ContactInView } = useInView();
-
-  console.log("LANDING: " + landingInView);
-  console.log("ABOUT: " + aboutInView);
-  console.log("Projects: " + projectsInView);
-
   const [msgDetails, setMsgDetails] = useState();
   const [isSubmitted, SetIsSubmitted] = useState(false);
   const [emailClicked, setEmailClicked] = useState(false);
-
   const [isCollapsed, setIsCollapsed] = useState(true);
 
   const toggleCollapse = () => {
@@ -112,13 +106,16 @@ function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch("http://localhost:4000/SendMessage", {
-      method: "post",
-      body: JSON.stringify(msgDetails),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
+    const response = await fetch(
+      "https://websiteserver.onrender.com/SendMessage",
+      {
+        method: "post",
+        body: JSON.stringify(msgDetails),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      }
+    );
 
     const result = await response.json();
 
@@ -130,7 +127,6 @@ function Home() {
   return (
     <div className="flex flex-col no-scrollbar ">
       {/*NAV */}
-
       <nav
         className={`  flex w-full flex-nowrap justify-end bg-white  text-black shadow-sm
         focus:text-[#CAD2C5] sm:flex-wrap sm:justify-start sm:py-4   sticky top-0 z-50 ${
@@ -268,8 +264,8 @@ function Home() {
                 <h1
                   className={`text-5xl flex justify-center font-extrabold text-black  px-8 mb-2 ${
                     aboutInView
-                      ? "animate-fade-right animate-duration-[3000ms]"
-                      : "hidden"
+                      ? "md:animate-fade-right md:animate-duration-[3000ms]"
+                      : "md:hidden"
                   }`}
                 >
                   About me
@@ -278,8 +274,8 @@ function Home() {
                 <p
                   className={`py-6 pl-4 text-xl ${
                     aboutInView
-                      ? "animate-fade-up animate-duration-[3000ms]"
-                      : "hidden"
+                      ? "md:animate-fade-up md:animate-duration-[3000ms]"
+                      : "md:hidden"
                   }`}
                 >
                   I am <span className="text-[#A4C3B2]">Oisin Egan</span>, a
@@ -299,8 +295,8 @@ function Home() {
                 <div
                   className={`flex  justify-center items-center mt-4 ${
                     aboutInView
-                      ? "animate-fade-right animate-duration-[2500ms]"
-                      : "hidden"
+                      ? "md:animate-fade-right md:animate-duration-[2500ms]"
+                      : "md:hidden"
                   }`}
                 >
                   <a
@@ -320,8 +316,8 @@ function Home() {
               <h1
                 className={`text-5xl flex justify-center font-extrabold text-black   px-8 mt-4 ${
                   aboutInView
-                    ? "animate-fade-left animate-duration-[3000ms]"
-                    : "hidden"
+                    ? "md:animate-fade-left md:animate-duration-[3000ms]"
+                    : "md:hidden"
                 }`}
               >
                 Skills
@@ -330,8 +326,8 @@ function Home() {
                 <div
                   className={`grid grid-cols-3 gap-4 2xl:grid-cols-4 bg-[#f9f9f9]  rounded-3xl p-4 mb-8 ${
                     aboutInView
-                      ? "animate-fade-up animate-duration-[3000ms]"
-                      : "hidden"
+                      ? "md:animate-fade-up md:animate-duration-[3000ms]"
+                      : "md:hidden"
                   }`}
                 >
                   {/*HTML*/}
@@ -448,8 +444,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
                 projectsInView
-                  ? "animate-fade-right animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-right md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
@@ -520,8 +516,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
                 projectsInView
-                  ? "animate-fade-left animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-left md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
@@ -621,8 +617,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col justify-center lg:ml-20 ${
                 projectsInView1
-                  ? "animate-fade-right animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-right md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
@@ -713,8 +709,8 @@ function Home() {
             <div
               className={`basis-1/2 p-6 flex flex-col items-center justify-center ${
                 projectsInView1
-                  ? "animate-fade-left animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-left md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <div className="flex justify-center">
@@ -803,8 +799,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
                 projectsInView2
-                  ? "animate-fade-right animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-right md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
@@ -875,8 +871,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
                 projectsInView2
-                  ? "animate-fade-left animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-left md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
@@ -943,8 +939,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
                 projectsInView3
-                  ? "animate-fade-right animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-right md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
@@ -990,8 +986,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
                 projectsInView3
-                  ? "animate-fade-left animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-left md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
@@ -1038,8 +1034,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
                 projectsInView4
-                  ? "animate-fade-right animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-right md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
@@ -1090,8 +1086,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
                 projectsInView4
-                  ? "animate-fade-left animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-left md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
@@ -1154,8 +1150,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
                 projectsInView5
-                  ? "animate-fade-right animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-right md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
@@ -1204,8 +1200,8 @@ function Home() {
             <div
               className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
                 projectsInView5
-                  ? "animate-fade-left animate-duration-[3000ms]"
-                  : "hidden"
+                  ? "md:animate-fade-left md:animate-duration-[3000ms]"
+                  : "md:hidden"
               }`}
             >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
@@ -1246,6 +1242,7 @@ function Home() {
           </div>
         </div>
       </div>
+
       {/* Contact  */}
       <div
         class="py-6 dark:bg-gray-800 dark:text-gray-50 h-screen  flex items-center "
@@ -1254,7 +1251,9 @@ function Home() {
       >
         <div
           className={`w-full ${
-            ContactInView ? "animate-fade animate-duration-[4000ms]" : "hidden"
+            ContactInView
+              ? "md:animate-fade md:animate-duration-[4000ms]"
+              : "md:hidden"
           }`}
         >
           <div class="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
@@ -1380,6 +1379,8 @@ function Home() {
           )}
         </div>
       </div>
+        
+     {/*Footer  */}
       <footer class="footer footer-center flex justify-between px-8  w-full p-4 bg-[#A4C3B2] text-gray-800">
         <div>
           <div class="text-center text-lg">
