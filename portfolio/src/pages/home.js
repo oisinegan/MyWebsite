@@ -130,7 +130,7 @@ function Home() {
       <nav
         className={`  flex w-full flex-nowrap justify-end bg-white  text-black shadow-sm
         focus:text-[#CAD2C5] sm:flex-wrap sm:justify-start sm:py-4   sticky top-0 z-50 ${
-          landingInView ? "hidden" : ""
+          landingInView ? "md:hidden" : ""
         }`}
       >
         <div class="flex w-full flex-wrap  justify-end px-3">
