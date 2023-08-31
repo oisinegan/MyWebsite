@@ -1386,7 +1386,7 @@ function Home() {
           <div class="text-center text-lg">
             <a
               class="font-semibold hover:text-white"
-              href="https://www.oisinegan.com"
+              href="https://oisin-egan.vercel.app/"
             >
               Oisin Egan
             </a>
