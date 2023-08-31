@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import Nav from "../components/nav.js";
+
 import LandingPage from "../images/LandingPage.jpeg";
-import CV from "../images/CV.png";
+
 import LinkedIn from "../images/linkedIn.png";
 import Github from "../images/github.png";
 import Gmail from "../images/gmail.png";
 import Cicon from "../images/Cicon.png";
-import HomeRental from "../images/HomeRental.png";
+
 import HomeRental1 from "../images/HomeRental1.png";
 import HomeRental2 from "../images/HomeRental2.png";
 import HomeRental3 from "../images/HomeRental3.png";
@@ -36,6 +36,7 @@ import SM6 from "../images/SM6.png";
 import ss1 from "../images/ss1.png";
 import ss4 from "../images/ss4.png";
 import ss6 from "../images/ss6.png";
+import { HashLink } from "react-router-hash-link";
 
 import {
   BiLogoReact,
@@ -60,20 +61,45 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 
+import copy from "copy-to-clipboard";
+import { useInView } from "react-intersection-observer";
+
 function Home() {
+  const { ref: landingRef, inView: landingInView } = useInView();
+  const { ref: aboutRef, inView: aboutInView } = useInView();
+  const { ref: projectsRef, inView: projectsInView } = useInView();
+  const { ref: projectsRef1, inView: projectsInView1 } = useInView();
+  const { ref: projectsRef2, inView: projectsInView2 } = useInView();
+  const { ref: projectsRef3, inView: projectsInView3 } = useInView();
+  const { ref: projectsRef4, inView: projectsInView4 } = useInView();
+  const { ref: projectsRef5, inView: projectsInView5 } = useInView();
+  const { ref: contactRef, inView: ContactInView } = useInView();
+
+  console.log("LANDING: " + landingInView);
+  console.log("ABOUT: " + aboutInView);
+  console.log("Projects: " + projectsInView);
+
   const [msgDetails, setMsgDetails] = useState();
   const [isSubmitted, SetIsSubmitted] = useState(false);
+  const [emailClicked, setEmailClicked] = useState(false);
 
-  const [resume, setResume] = useState(false);
-  const [HomeRentalDetails, setHomeRentalDetails] = useState(false);
-  const [JobHireDetails, setJobHireDetails] = useState(false);
-  const [HuffmanDetails, setHuffmanDetails] = useState(false);
-  const [EcommDetails, setEcommDetails] = useState(false);
-  const [CovidDetails, setCovidDetails] = useState(false);
-  const [SurviveDetails, setSurviveDetails] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
+
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed);
+  };
+
   const LandingImg = {
     backgroundImage: `url(${LandingPage})`,
     zIndex: "-1",
+  };
+
+  const copyEmail = () => {
+    setEmailClicked(true);
+    copy("oisinegan00@gmail.com");
+    setTimeout(() => {
+      setEmailClicked(false);
+    }, 3000);
   };
 
   const handleChange = (e) => {
@@ -102,19 +128,87 @@ function Home() {
   };
 
   return (
-    <div className="flex flex-col ">
+    <div className="flex flex-col no-scrollbar ">
       {/*NAV */}
-      <Nav />
+
+      <nav
+        className={`  flex w-full flex-nowrap justify-end bg-white  text-black shadow-sm
+        focus:text-[#CAD2C5] sm:flex-wrap sm:justify-start sm:py-4   sticky top-0 z-50 ${
+          landingInView ? "hidden" : ""
+        }`}
+      >
+        <div class="flex w-full flex-wrap  justify-end px-3">
+          {/* Collapse button */}
+          <button
+            class="block border-0 bg-transparent px-2 text-[#EBEBEB] hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 sm:hidden"
+            type="button"
+            onClick={toggleCollapse}
+            data-te-collapse-init
+            data-te-target="#navbarSupportedContent8"
+            aria-controls="navbarSupportedContent8"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="[&>svg]:w-7">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="black"
+                class="h-16 w-7"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </span>
+          </button>
+          {/* nav items */}
+          <div
+            class={`!visible mt-2 ${
+              isCollapsed ? "hidden" : "flex"
+            } flex-grow basis-[100%] items-center justify-center sm:justify-end sm:mt-0 sm:!flex sm:basis-auto`}
+            id="navbarSupportedContent8"
+            data-te-collapse-item
+          >
+            <ul
+              class="list-style-none flex flex-col pl-0 sm:mt-0 sm:flex-row"
+              data-te-navbar-nav-ref
+            >
+              <HashLink
+                to="/#about"
+                className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080] "
+              >
+                About
+              </HashLink>
+
+              <HashLink
+                to="/#projects"
+                className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080]"
+              >
+                Projects
+              </HashLink>
+
+              <HashLink
+                to="/#contact"
+                className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080] "
+              >
+                Contact
+              </HashLink>
+            </ul>
+          </div>
+        </div>
+      </nav>
 
       {/* Landing Page */}
-      <div className="h-screen ">
+      <div className="h-screen" ref={landingRef}>
         <div
-          class="relative overflow-hidden  bg-cover bg-no-repeat p-12 h-full text-center "
+          class=" overflow-hidden  bg-cover bg-no-repeat p-12 h-full text-center "
           style={LandingImg}
         >
-          <div className="absolute inset-0 bg-black opacity-50"></div>
-
-          <div class="flex h-full items-center justify-center">
+          <div className="absolute inset-0 bg-black opacity-50 "></div>
+          <div class=" flex h-full items-center justify-center relative z-10">
             <div class="text-white  p-2 rounded-lg">
               <h2 class="mb-4 text-6xl text-[#EAF4F4]  font-semibold animate-fade-left animate-duration-[5000ms]">
                 Oisin Egan
@@ -123,159 +217,214 @@ function Home() {
                 Final year computing student.
               </h4>
               <div className="flex justify-between ">
-                <img
-                  src={LinkedIn}
-                  className="animate-fade-right animate-duration-[2000ms]"
-                ></img>
+                <a
+                  href="https://www.linkedin.com/in/OisinEgan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    alt="LinkedIn Logo"
+                    src={LinkedIn}
+                    className="animate-fade-right animate-duration-[2000ms]"
+                  ></img>
+                </a>
 
-                <img
-                  src={Github}
-                  className="animate-fade-up animate-duration-[2000ms]"
-                ></img>
+                <a
+                  href="https://github.com/oisinegan"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <img
+                    alt="Github Logo"
+                    src={Github}
+                    className="animate-fade-up animate-duration-[2000ms]"
+                  ></img>
+                </a>
 
-                <img
-                  src={Gmail}
-                  className="animate-fade-left animate-duration-[2000ms]"
-                ></img>
+                <button onClick={copyEmail}>
+                  <img
+                    alt="Gmail logo"
+                    src={Gmail}
+                    className="animate-fade-left animate-duration-[2000ms]"
+                  ></img>
+                </button>
               </div>
+              {emailClicked && (
+                <p className="pt-4 text-[#A4C3B2] font-semibold">
+                  Email copied to clipboard
+                </p>
+              )}
             </div>
           </div>
         </div>
       </div>
 
-      {/* ABOUT AND SKILLS */}
-      <div className="h-screen" id="skills">
-        <div
-          className="flex flex-col lg:flex-row  mx-12 items-center justify-center mt-20 "
-          id="about"
-        >
+      {/* ABOUT AND SKILLS     */}
+      <div className="min-h-screen flex items-center justify-center" id="about">
+        <div className="flex flex-col lg:flex-row  mx-12  mt-20" ref={aboutRef}>
           <div className="flex basis-1/2 flex-col items-center justify-center ">
-            <div className="w-3/4 ">
-              <h1 className="text-5xl flex justify-center font-extrabold text-black  px-8 mb-2">
-                About me
-              </h1>
-
-              <p className="py-6 pl-4 text-xl">
-                I am <span className="text-[#A4C3B2]">Oisin Egan</span>, a final
-                year Computing student in Technological University Dublin
-                (Tu860). Over the first three years of studying computing I have
-                maintained a{" "}
-                <span className="text-[#A4C3B2]">3.5 gpa or higher</span>. I
-                like sports, programming and learning new things. Outside of
-                academic studies, I enjoy developing{" "}
-                <span className="text-[#A4C3B2]">full stack applications</span>{" "}
-                using new technologies that I don't learn in university to
-                maximize my skills.
-              </p>
-
-              <div className="flex  justify-center items-center mt-4">
-                <a
-                  href="https://oisinegancv.tiiny.site/"
-                  target="_blank"
-                  class="ml-8  mb-8  text-xl text-white bg-[#6B9080] hover:bg-[#A4C3B2]  font-medium rounded-lg text-sm px-5 py-2.5 mr-6  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+            <div className="w-3/4">
+              <div>
+                <h1
+                  className={`text-5xl flex justify-center font-extrabold text-black  px-8 mb-2 ${
+                    aboutInView
+                      ? "animate-fade-right animate-duration-[3000ms]"
+                      : "hidden"
+                  }`}
                 >
-                  Resume
-                </a>
+                  About me
+                </h1>
+
+                <p
+                  className={`py-6 pl-4 text-xl ${
+                    aboutInView
+                      ? "animate-fade-up animate-duration-[3000ms]"
+                      : "hidden"
+                  }`}
+                >
+                  I am <span className="text-[#A4C3B2]">Oisin Egan</span>, a
+                  final year Computing student in Technological University
+                  Dublin (Tu860). Over the first three years of studying
+                  computing I have maintained a{" "}
+                  <span className="text-[#A4C3B2]">3.5 gpa or higher</span>. I
+                  like sports, programming and learning new things. Outside of
+                  academic studies, I enjoy developing{" "}
+                  <span className="text-[#A4C3B2]">
+                    full stack applications
+                  </span>{" "}
+                  using new technologies that I don't learn in university to
+                  maximize my skills.
+                </p>
+
+                <div
+                  className={`flex  justify-center items-center mt-4 ${
+                    aboutInView
+                      ? "animate-fade-right animate-duration-[2500ms]"
+                      : "hidden"
+                  }`}
+                >
+                  <a
+                    rel="noopener noreferrer"
+                    href="https://oisinegancv.tiiny.site/"
+                    target="_blank"
+                    class="ml-8  mb-8  text-xl text-white bg-[#6B9080] hover:bg-[#A4C3B2]  font-medium rounded-lg text-sm px-5 py-2.5 mr-6  dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+                  >
+                    Resume
+                  </a>
+                </div>
               </div>
             </div>
           </div>
+          <div className="basis-1/2 flex justify-center flex-col">
+            <div>
+              <h1
+                className={`text-5xl flex justify-center font-extrabold text-black   px-8 mt-4 ${
+                  aboutInView
+                    ? "animate-fade-left animate-duration-[3000ms]"
+                    : "hidden"
+                }`}
+              >
+                Skills
+              </h1>
+              <div className="flex justify-center flex-wrap pt-6  ">
+                <div
+                  className={`grid grid-cols-3 gap-4 2xl:grid-cols-4 bg-[#f9f9f9]  rounded-3xl p-4 mb-8 ${
+                    aboutInView
+                      ? "animate-fade-up animate-duration-[3000ms]"
+                      : "hidden"
+                  }`}
+                >
+                  {/*HTML*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl ">
+                    <div className="p-1 rounded-full">
+                      <BiLogoHtml5 className="h-14 w-14 " />
+                    </div>
+                    <p className="">Html</p>
+                  </div>
+                  {/*React*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoReact className="h-14 w-14 " />
+                    </div>
+                    <p className="">React</p>
+                  </div>
+                  {/*Tailwinds*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoTailwindCss className="h-14 w-14 " />
+                    </div>
+                    <p className="">Tailwind</p>
+                  </div>
 
-          <div className="basis-1/2 flex justify-center flex-col " id="skills">
-            <h1 className="text-5xl flex justify-center font-extrabold text-black  px-8 mt-4">
-              Skills
-            </h1>
-            <div className="flex justify-center flex-wrap pt-6 ">
-              <div className="grid grid-cols-3 gap-4 2xl:grid-cols-4 bg-[#f9f9f9]  rounded-3xl p-4 mb-8">
-                {/*HTML*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl ">
-                  <div className="p-1 rounded-full">
-                    <BiLogoHtml5 className="h-14 w-14 " />
+                  {/*React Native*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoReact className="h-14 w-14 " />
+                    </div>
+                    <p className="">React N</p>
                   </div>
-                  <p className="">Html</p>
-                </div>
-                {/*React*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoReact className="h-14 w-14 " />
-                  </div>
-                  <p className="">React</p>
-                </div>
-                {/*Tailwinds*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoTailwindCss className="h-14 w-14 " />
-                  </div>
-                  <p className="">Tailwind</p>
-                </div>
 
-                {/*React Native*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoReact className="h-14 w-14 " />
+                  {/*Css */}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoCss3 className="h-14 w-14 " />
+                    </div>
+                    <p className="">Css</p>
                   </div>
-                  <p className="">React N</p>
-                </div>
 
-                {/*Css */}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoCss3 className="h-14 w-14 " />
+                  {/*Next js*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <TbBrandNextjs className="h-14 w-14 " />
+                    </div>
+                    <p className="">Next js</p>
                   </div>
-                  <p className="">Css</p>
-                </div>
 
-                {/*Next js*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <TbBrandNextjs className="h-14 w-14 " />
+                  {/*Java*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoJava className="h-14 w-14 " />
+                    </div>
+                    <p className="">Java</p>
                   </div>
-                  <p className="">Next js</p>
-                </div>
+                  {/*Node*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoNodejs className="h-14 w-14 " />
+                    </div>
+                    <p className="">Node</p>
+                  </div>
+                  {/*Php*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoPhp className="h-14 w-14 " />
+                    </div>
+                    <p className="">Php</p>
+                  </div>
 
-                {/*Java*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoJava className="h-14 w-14 " />
+                  {/*MySql */}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <DiMysql className="h-14 w-14 " />
+                    </div>
+                    <p className="">MySql</p>
                   </div>
-                  <p className="">Java</p>
-                </div>
-                {/*Node*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoNodejs className="h-14 w-14 " />
-                  </div>
-                  <p className="">Node</p>
-                </div>
-                {/*Php*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoPhp className="h-14 w-14 " />
-                  </div>
-                  <p className="">Php</p>
-                </div>
 
-                {/*MySql */}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <DiMysql className="h-14 w-14 " />
+                  {/*JS*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoJavascript className="h-14 w-14 " />
+                    </div>
+                    <p className="">Javascript</p>
                   </div>
-                  <p className="">MySql</p>
-                </div>
 
-                {/*JS*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoJavascript className="h-14 w-14 " />
+                  {/*JS*/}
+                  <div className="flex flex-col  items-center  p-2 rounded-2xl">
+                    <div className="p-1 rounded-full">
+                      <BiLogoFirebase className="h-14 w-14 " />
+                    </div>
+                    <p className="">Firebase</p>
                   </div>
-                  <p className="">Javascript</p>
-                </div>
-
-                {/*JS*/}
-                <div className="flex flex-col  items-center  p-2 rounded-2xl">
-                  <div className="p-1 rounded-full">
-                    <BiLogoFirebase className="h-14 w-14 " />
-                  </div>
-                  <p className="">Firebase</p>
                 </div>
               </div>
             </div>
@@ -284,13 +433,25 @@ function Home() {
       </div>
 
       {/* Projects  */}
-      <div className="bg-[#f9f9f9]  flex flex-col px-2" id="projects">
+      <div
+        className="bg-[#f9f9f9]  flex flex-col px-2  min-h-screen"
+        id="projects"
+      >
         <h1 className="text-7xl flex justify-center font-extrabold text-black  px-8 my-24">
           Projects
         </h1>
-        <div className="flex  flex-wrap">
-          <div className="flex flex-col lg:flex-row w-full mt-6 mb-24">
-            <div className="basis-1/2 p-6">
+        <div className="flex  flex-wrap ">
+          <div
+            className="flex flex-col lg:flex-row w-full mt-6 mb-24  min-h-screen"
+            ref={projectsRef}
+          >
+            <div
+              className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
+                projectsInView
+                  ? "animate-fade-right animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
                 <div className="carousel-item w-full" id="HomeRental1">
                   <img
@@ -356,7 +517,13 @@ function Home() {
                 </a>
               </div>
             </div>
-            <div className="basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20">
+            <div
+              className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
+                projectsInView
+                  ? "animate-fade-left animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
                 Home Rental Website
               </h3>
@@ -422,6 +589,7 @@ function Home() {
                 <a
                   href="https://home-rental-client.vercel.app/"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <button
                     type="button"
@@ -433,6 +601,7 @@ function Home() {
                 <a
                   href="https://github.com/oisinegan/HomeRental"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <button
                     type="button"
@@ -445,8 +614,17 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col-reverse bg-[#f1f1f1] lg:flex-row w-full py-6 mt-6 mb-24">
-            <div className="basis-1/2 flex flex-col justify-center lg:ml-20">
+          <div
+            className="flex flex-col-reverse bg-[#f1f1f1] lg:flex-row w-full py-6 mt-6 mb-24 min-h-screen"
+            ref={projectsRef1}
+          >
+            <div
+              className={`basis-1/2 flex flex-col justify-center lg:ml-20 ${
+                projectsInView1
+                  ? "animate-fade-right animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
                 Job Hiring Mobile App
               </h3>
@@ -520,6 +698,7 @@ function Home() {
                 <a
                   href="https://github.com/oisinegan/Major-Group-Project"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <button
                     type="button"
@@ -531,7 +710,13 @@ function Home() {
               </div>
             </div>
 
-            <div className="basis-1/2 p-6 flex-col justify-center">
+            <div
+              className={`basis-1/2 p-6 flex flex-col items-center justify-center ${
+                projectsInView1
+                  ? "animate-fade-left animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <div className="flex justify-center">
                 <div className="  carousel md:h-[30em] lg:h-auto   w-5/12 lg:w-1/2  md:min-h-[28em] md:max-h-[50em] shadow-2xl shadow-[#cce3de] rounded-md ">
                   <div className="carousel-item w-full   " id="JH1">
@@ -611,8 +796,17 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row w-full mt-6 mb-24">
-            <div className="basis-1/2 p-6">
+          <div
+            className="flex flex-col lg:flex-row w-full mt-6 mb-24 min-h-screen"
+            ref={projectsRef2}
+          >
+            <div
+              className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
+                projectsInView2
+                  ? "animate-fade-right animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
                 <div className="carousel-item w-full" id="SM1">
                   <img
@@ -678,7 +872,13 @@ function Home() {
                 </a>
               </div>
             </div>
-            <div className="basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20">
+            <div
+              className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
+                projectsInView2
+                  ? "animate-fade-left animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
                 Simulating the Spread of Covid-19 using a Cellular Automata
               </h3>
@@ -708,7 +908,7 @@ function Home() {
               <div className="flex my-2 justify-center">
                 <div className="flex flex-col  items-center  p-1 rounded-2xl">
                   <div className="p-1 rounded-full">
-                    <img src={Cicon} className="h-12 w-12 " />
+                    <img src={Cicon} alt="C icon" className="h-12 w-12 " />
                   </div>
                   <p className="text-sm">C</p>
                 </div>
@@ -723,6 +923,7 @@ function Home() {
                 <a
                   href="https://github.com/oisinegan/Simulating_Covid19_With_CellularAutomata"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <button
                     type="button"
@@ -735,8 +936,17 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col-reverse bg-[#f1f1f1] lg:flex-row w-full py-6 mt-6 mb-24">
-            <div className="basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20">
+          <div
+            className="flex flex-col-reverse bg-[#f1f1f1] lg:flex-row w-full py-6 mt-6 mb-24 min-h-screen"
+            ref={projectsRef3}
+          >
+            <div
+              className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
+                projectsInView3
+                  ? "animate-fade-right animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
                 Huffman Coding
               </h3>
@@ -766,6 +976,7 @@ function Home() {
                 <a
                   href="https://github.com/oisinegan/HuffmanCoding"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <button
                     type="button"
@@ -776,7 +987,13 @@ function Home() {
                 </a>
               </div>
             </div>
-            <div className="basis-1/2 p-6">
+            <div
+              className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
+                projectsInView3
+                  ? "animate-fade-left animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
                 <div className="carousel-item w-full" id="HC1">
                   <img
@@ -814,8 +1031,17 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col lg:flex-row w-full mt-6 mb-24">
-            <div className="basis-1/2 p-6">
+          <div
+            className="flex flex-col lg:flex-row w-full mt-6 mb-24 min-h-screen"
+            ref={projectsRef4}
+          >
+            <div
+              className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
+                projectsInView4
+                  ? "animate-fade-right animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
                 <div className="carousel-item w-full" id="SF1">
                   <img
@@ -861,7 +1087,13 @@ function Home() {
                 </a>
               </div>
             </div>
-            <div className="basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20">
+            <div
+              className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
+                projectsInView4
+                  ? "animate-fade-left animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
                 E-commerce website
               </h3>
@@ -902,6 +1134,7 @@ function Home() {
                 <a
                   href="https://github.com/oisinegan/Project_SET_WD"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <button
                     type="button"
@@ -914,8 +1147,17 @@ function Home() {
             </div>
           </div>
 
-          <div className="flex flex-col-reverse bg-[#f1f1f1] lg:flex-row w-full py-12 mt-6 ">
-            <div className="basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20">
+          <div
+            className="flex flex-col-reverse bg-[#f1f1f1] lg:flex-row w-full py-12 mt-6 min-h-screen"
+            ref={projectsRef5}
+          >
+            <div
+              className={`basis-1/2 flex flex-col justify-center lg:px-14 xl:px-20 ${
+                projectsInView5
+                  ? "animate-fade-right animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <h3 class="mb-2 text-4xl text-center  pt-2 font-semibold leading-tight text-black">
                 Zombie Fps Survival Game
               </h3>
@@ -948,6 +1190,7 @@ function Home() {
                 <a
                   href="https://github.com/oisinegan/FinalIMMProject"
                   target="_blank"
+                  rel="noreferrer"
                 >
                   <button
                     type="button"
@@ -958,7 +1201,13 @@ function Home() {
                 </a>
               </div>
             </div>
-            <div className="basis-1/2 p-6">
+            <div
+              className={`basis-1/2 flex flex-col items-center justify-center p-6 ${
+                projectsInView5
+                  ? "animate-fade-left animate-duration-[3000ms]"
+                  : "hidden"
+              }`}
+            >
               <div className="w-full carousel  md:min-h-[30em] shadow-2xl shadow-[#cce3de] rounded-md ">
                 <div className="carousel-item w-full" id="ss1">
                   <img
@@ -1001,8 +1250,13 @@ function Home() {
       <div
         class="py-6 dark:bg-gray-800 dark:text-gray-50 h-screen  flex items-center "
         id="contact"
+        ref={contactRef}
       >
-        <div className="w-full">
+        <div
+          className={`w-full ${
+            ContactInView ? "animate-fade animate-duration-[4000ms]" : "hidden"
+          }`}
+        >
           <div class="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
             <div class="py-6 md:py-0 md:px-6">
               <h1 class="text-5xl font-bold mb-6">Get in touch</h1>
@@ -1035,6 +1289,7 @@ function Home() {
                   <a
                     href="https://www.linkedin.com/in/OisinEgan/"
                     target="_blank"
+                    rel="noreferrer"
                   >
                     <span>linkedin.com/in/OisinEgan</span>
                   </a>
@@ -1141,6 +1396,7 @@ function Home() {
             class="font-semibold  hover:text-white"
             href="https://www.linkedin.com/in/OisinEgan"
             target="_Blank"
+            rel="noreferrer"
           >
             LinkedIn
           </a>
@@ -1148,6 +1404,7 @@ function Home() {
             class="font-semibold  hover:text-white"
             href="https://github.com/oisinegan"
             target="_Blank"
+            rel="noreferrer"
           >
             Github
           </a>
