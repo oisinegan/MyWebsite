@@ -200,10 +200,10 @@ function Home() {
       {/* Landing Page */}
       <div className="h-screen" ref={landingRef}>
         <div
-          class=" overflow-hidden  bg-cover bg-no-repeat p-12 h-full text-center "
+          class=" overflow-hidden  bg-cover bg-no-repeat p-12 h-[calc(93vh)] md:h-full text-center "
           style={LandingImg}
         >
-          <div className="absolute inset-0 bg-black opacity-50 "></div>
+          <div className="absolute inset-0 bg-black opacity-50"></div>
           <div class=" flex h-full items-center justify-center relative z-10">
             <div class="text-white  p-2 rounded-lg">
               <h2 class="mb-4 text-6xl text-[#EAF4F4]  font-semibold animate-fade-left animate-duration-[5000ms]">
@@ -259,7 +259,7 @@ function Home() {
       <div className="min-h-screen flex items-center justify-center" id="about">
         <div className="flex flex-col lg:flex-row  mx-12  mt-20" ref={aboutRef}>
           <div className="flex basis-1/2 flex-col items-center justify-center ">
-            <div className="w-3/4">
+            <div className="md:w-3/4">
               <div>
                 <h1
                   className={`text-5xl flex justify-center font-extrabold text-black  px-8 mb-2 ${
