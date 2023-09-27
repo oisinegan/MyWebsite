@@ -79,6 +79,8 @@ function Home() {
   const [emailClicked, setEmailClicked] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(true);
 
+  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed);
   };
@@ -127,76 +129,77 @@ function Home() {
   return (
     <div className="flex flex-col no-scrollbar ">
       {/*NAV */}
-      <nav
-        className={`  flex w-full flex-nowrap justify-end bg-white  text-black shadow-sm
+      {isSafari ? null : (
+        <nav
+          className={`  flex w-full flex-nowrap justify-end bg-white  text-black shadow-sm
         focus:text-[#CAD2C5] sm:flex-wrap sm:justify-start sm:py-4   sticky top-0 z-50 ${
           landingInView ? "md:hidden" : ""
         }`}
-      >
-        <div class="flex w-full flex-wrap  justify-end px-3">
-          {/* Collapse button */}
-          <button
-            class="block border-0 bg-transparent px-2 text-[#EBEBEB] hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 sm:hidden"
-            type="button"
-            onClick={toggleCollapse}
-            data-te-collapse-init
-            data-te-target="#navbarSupportedContent8"
-            aria-controls="navbarSupportedContent8"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="[&>svg]:w-7">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 24 24"
-                fill="black"
-                class="h-16 w-7"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </span>
-          </button>
-          {/* nav items */}
-          <div
-            class={`!visible mt-2 ${
-              isCollapsed ? "hidden" : "flex"
-            } flex-grow basis-[100%] items-center justify-center sm:justify-end sm:mt-0 sm:!flex sm:basis-auto`}
-            id="navbarSupportedContent8"
-            data-te-collapse-item
-          >
-            <ul
-              class="list-style-none flex flex-col pl-0 sm:mt-0 sm:flex-row"
-              data-te-navbar-nav-ref
+        >
+          <div class="flex w-full flex-wrap  justify-end px-3">
+            {/* Collapse button */}
+            <button
+              class="block border-0 bg-transparent px-2 text-[#EBEBEB] hover:no-underline hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none focus:ring-0 dark:text-neutral-200 sm:hidden"
+              type="button"
+              onClick={toggleCollapse}
+              data-te-collapse-init
+              data-te-target="#navbarSupportedContent8"
+              aria-controls="navbarSupportedContent8"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
             >
-              <HashLink
-                to="/#about"
-                className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080] "
+              <span class="[&>svg]:w-7">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="black"
+                  class="h-16 w-7"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M3 6.75A.75.75 0 013.75 6h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 6.75zM3 12a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75A.75.75 0 013 12zm0 5.25a.75.75 0 01.75-.75h16.5a.75.75 0 010 1.5H3.75a.75.75 0 01-.75-.75z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </span>
+            </button>
+            {/* nav items */}
+            <div
+              class={`!visible mt-2 ${
+                isCollapsed ? "hidden" : "flex"
+              } flex-grow basis-[100%] items-center justify-center sm:justify-end sm:mt-0 sm:!flex sm:basis-auto`}
+              id="navbarSupportedContent8"
+              data-te-collapse-item
+            >
+              <ul
+                class="list-style-none flex flex-col pl-0 sm:mt-0 sm:flex-row"
+                data-te-navbar-nav-ref
               >
-                About
-              </HashLink>
+                <HashLink
+                  to="/#about"
+                  className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080] "
+                >
+                  About
+                </HashLink>
 
-              <HashLink
-                to="/#projects"
-                className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080]"
-              >
-                Projects
-              </HashLink>
+                <HashLink
+                  to="/#projects"
+                  className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080]"
+                >
+                  Projects
+                </HashLink>
 
-              <HashLink
-                to="/#contact"
-                className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080] "
-              >
-                Contact
-              </HashLink>
-            </ul>
+                <HashLink
+                  to="/#contact"
+                  className=" my-1 pl-2 sm:my-0 sm:pl-2 sm:pr-1 mx-2 font-bold text-black hover:text-[#6B9080] "
+                >
+                  Contact
+                </HashLink>
+              </ul>
+            </div>
           </div>
-        </div>
-      </nav>
-
+        </nav>
+      )}
       {/* Landing Page */}
       <div className="h-screen" ref={landingRef}>
         <div
@@ -1386,7 +1389,7 @@ function Home() {
           <div class="text-center text-lg">
             <a
               class="font-semibold hover:text-white"
-              href="https://www.oisinegan.com/"
+              href="https://oisin-egan.vercel.app/"
             >
               Oisin Egan
             </a>
